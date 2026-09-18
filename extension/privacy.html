@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reader privacy</title><link rel="stylesheet" href="ui.css"></head><body><main><a href="library.html">Back to archive</a><section class="panel">
+<h1>Privacy</h1>
+<p>Reader 0.2.0 stores a local archive of X posts. It has no account, cloud service, analytics, advertising, or telemetry.</p>
+<h2>What it handles</h2>
+<p>After you enable capture, Reader saves posts loaded by X: text, quoted text, author names and handles, IDs, timestamps, links, media URLs, available metrics, and reading/like/bookmark signals. This includes posts you may not read. Posts can contain personal or sensitive information. Media files are not downloaded.</p>
+<p>Reader observes the X page&#x27;s post responses and engagement requests. It does not read cookies, retain authentication headers, capture direct messages, or observe unrelated websites. Search terms go to the local companion and are not logged.</p>
+<h2>Where data goes</h2>
+<p>Captures wait in Chrome local storage, then go over HTTP to 127.0.0.1:8787 on the same computer. The companion stores them in data/reader.db, or the path set by READER_DB. The queue holds at most 5,000 posts, 5,000 signals, and about 6 MiB; oldest items are dropped when full, with a count shown in Reader.</p>
+<p>Reader sends no captured data to its developer or a remote service. It does not sell data or use it for advertising. The archive UI loads no remote images, fonts, or scripts. Original-post, help, and download links contact their respective sites when opened. X handles normal browsing under its own policies.</p>
+<p>Reader does not encrypt its database or Chrome storage. Anyone with access to those files, backups, or exports may read them. The companion binds to loopback and blocks ordinary website origins, but other local programs and extensions can access it. Do not expose it through a proxy, tunnel, or public network.</p>
+<h2>Controls and deletion</h2>
+<p>Capture starts paused. Enabling it saves new captures; pausing stops new saves while the existing queue continues syncing. Settings and counters remain in Chrome local storage until cleared or the extension is removed.</p>
+<p>Setup &amp; data can export the companion&#x27;s X archive as JSON or delete it along with this extension&#x27;s queue and counters. Sync before exporting to include pending captures. Deletion leaves capture paused. If the companion is offline, Reader clears the queue and requires you to reconnect and retry database deletion before resuming capture.</p>
+<p>Deletion does not remove downloaded exports, backups, copies on X, or queues in other Chrome profiles. It is not a guarantee of forensic erasure. Uninstalling the extension removes its Chrome storage but leaves the database. To remove the default archive manually, stop the companion and delete data/reader.db and any reader.db-* sidecars. Remove exports and backups separately.</p>
+<p>The optional Instagram importer reads a Meta export only when you run it and writes a separate data/instagram.db. The extension does not search, export, or delete that database. Delete it and the original Meta export separately.</p>
+<h2>Contact</h2>
+<p>Report privacy issues at https://github.com/jdubba1/reader/issues. Issues are public; do not include captured posts, exports, credentials, or private logs.</p>
+</section></main></body></html>
